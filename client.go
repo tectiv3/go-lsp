@@ -10,8 +10,8 @@ import (
 	"context"
 	"io"
 
-	"encoding/json"
 	"github.com/tectiv3/go-lsp/jsonrpc"
+	"go.bug.st/json"
 )
 
 // ServerMessagesHandler interface has all the methods that an LSP Client should

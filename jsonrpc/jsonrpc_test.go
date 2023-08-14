@@ -17,8 +17,8 @@ import (
 	"testing"
 	"time"
 
-	"encoding/json"
 	"github.com/stretchr/testify/require"
+	"go.bug.st/json"
 )
 
 func TestRPCConnection(t *testing.T) {

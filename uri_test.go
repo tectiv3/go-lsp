@@ -11,8 +11,8 @@ import (
 	"strings"
 	"testing"
 
-	"encoding/json"
 	"github.com/stretchr/testify/require"
+	"go.bug.st/json"
 )
 
 func TestUriToPath(t *testing.T) {

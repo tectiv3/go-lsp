@@ -18,7 +18,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 // Connection is a JSON RPC connection for LSP protocol

@@ -9,7 +9,7 @@ package jsonrpc
 import (
 	"time"
 
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 type Logger interface {

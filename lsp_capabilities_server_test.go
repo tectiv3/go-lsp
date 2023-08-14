@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"testing"
 
-	"encoding/json"
 	"github.com/stretchr/testify/require"
+	"go.bug.st/json"
 )
 
 func TestMarshalUnmarshalWithBooleanSumType(t *testing.T) {

@@ -9,7 +9,7 @@ package jsonrpc
 import (
 	"fmt"
 
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 type RequestID json.RawMessage

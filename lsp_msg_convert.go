@@ -7,7 +7,7 @@
 package lsp
 
 import (
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 //   ___   REQUEST

@@ -9,7 +9,7 @@ package lsp
 import (
 	"errors"
 
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 type CommandOrCodeAction struct {

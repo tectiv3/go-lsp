@@ -16,11 +16,11 @@ import (
 	"sync"
 	"testing"
 
-	"encoding/json"
 	"github.com/arduino/go-paths-helper"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
 	"github.com/tectiv3/go-lsp/jsonrpc"
+	"go.bug.st/json"
 )
 
 var sketchPath = paths.New("/home/user/sketch")

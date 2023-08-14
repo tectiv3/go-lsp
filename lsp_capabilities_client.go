@@ -9,7 +9,7 @@ package lsp
 import (
 	"fmt"
 
-	"encoding/json"
+	"go.bug.st/json"
 )
 
 type KeyValue map[string]interface{}
