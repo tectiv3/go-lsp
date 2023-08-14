@@ -9,7 +9,7 @@ package lsp
 import (
 	"fmt"
 
-	"go.bug.st/json"
+	"encoding/json"
 )
 
 type PublishDiagnosticsParams struct {

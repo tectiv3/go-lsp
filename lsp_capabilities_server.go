@@ -9,7 +9,7 @@ package lsp
 import (
 	"fmt"
 
-	"go.bug.st/json"
+	"encoding/json"
 )
 
 type ServerCapabilities struct {
@@ -17,7 +17,7 @@ type ServerCapabilities struct {
 	// defining each notification or for backwards compatibility the
 	// TextDocumentSyncKind number. If omitted it defaults to
 	// `TextDocumentSyncKind.None`.
-	TextDocumentSync *TextDocumentSyncOptions `json:"textDocumentSync,omitempty"`
+	TextDocumentSync json.RawMessage `json:"textDocumentSync,omitempty"`
 
 	// The server provides completion support.
 	CompletionProvider *CompletionOptions `json:"completionProvider,omitempty"`
@@ -362,7 +362,7 @@ type StaticRegistrationOptions struct {
 	ID string `json:"id,omitempty"`
 }
 
-//boolean|DefinitionOptions
+// boolean|DefinitionOptions
 type DefinitionOptions struct {
 	*WorkDoneProgressOptions
 }

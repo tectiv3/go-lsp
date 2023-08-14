@@ -4,7 +4,7 @@
 ## How to use
 
 ```go
-import "go.bug.st/lsp"
+import "github.com/tectiv3/go-lsp"
 ```
 
 ## Documentation
@@ -13,4 +13,4 @@ TODO
 
 ## Disclaimer
 
-This is alpha-grade software, API may change without notice. If you decice to use this library, expect breaking changes.
+This is alpha-grade software, API may change without notice. If you decide to use this library, expect breaking changes.

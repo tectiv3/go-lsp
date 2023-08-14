@@ -9,86 +9,18 @@ package lsp
 import (
 	"fmt"
 
-	"go.bug.st/json"
+	"encoding/json"
 )
+
+type KeyValue map[string]interface{}
 
 // ClientCapabilities Workspace specific client capabilities.
 type ClientCapabilities struct {
-	Workspace *struct {
-		// The client supports applying batch edits
-		// to the workspace by supporting the request
-		// 'workspace/applyEdit'
-		ApplyEdit bool `json:"applyEdit,omitempty"`
-
-		// Capabilities specific to `WorkspaceEdit`s
-		WorkspaceEdit *WorkspaceEditClientCapabilities `json:"workspaceEdit,omitempty"`
-
-		// Capabilities specific to the `workspace/didChangeConfiguration`
-		// notification.
-		DidChangeConfiguration *DidChangeConfigurationClientCapabilities `json:"didChangeConfiguration,omitempty"`
-
-		// Capabilities specific to the `workspace/didChangeWatchedFiles`
-		// notification.
-		DidChangeWatchedFiles *DidChangeWatchedFilesClientCapabilities `json:"didChangeWatchedFiles,omitempty"`
-
-		// Capabilities specific to the `workspace/symbol` request.
-		Symbol *WorkspaceSymbolClientCapabilities `json:"symbol,omitempty"`
-
-		// Capabilities specific to the `workspace/executeCommand` request.
-		ExecuteCommand *ExecuteCommandClientCapabilities `json:"executeCommand,omitempty"`
-
-		// The client has support for workspace folders.
-		//
-		// @since 3.6.0
-		WorkspaceFolders bool `json:"workspaceFolders,omitempty"`
-
-		// The client supports `workspace/configuration` requests.
-		//
-		// @since 3.6.0
-		Configuration bool `json:"configuration,omitempty"`
-
-		// Capabilities specific to the semantic token requests scoped to the
-		// workspace.
-		//
-		// @since 3.16.0
-		SemanticTokens *SemanticTokensWorkspaceClientCapabilities `json:"semanticTokens,omitempty"`
-
-		// Capabilities specific to the code lens requests scoped to the
-		// workspace.
-		//
-		// @since 3.16.0
-		CodeLens *CodeLensWorkspaceClientCapabilities `json:"codeLens,omitempty"`
-
-		// The client has support for file requests/notifications.
-		//
-		// @since 3.16.0
-		FileOperations *struct {
-			// Whether the client supports dynamic registration for file
-			// requests/notifications.
-			DynamicRegistration bool `json:"dynamicRegistration,omitempty"`
-
-			// The client has support for sending didCreateFiles notifications.
-			DidCreate bool `json:"didCreate,omitempty"`
-
-			// The client has support for sending willCreateFiles requests.
-			WillCreate bool `json:"willCreate,omitempty"`
-
-			// The client has support for sending didRenameFiles notifications.
-			DidRename bool `json:"didRename,omitempty"`
-
-			// The client has support for sending willRenameFiles requests.
-			WillRename bool `json:"willRename,omitempty"`
-
-			// The client has support for sending didDeleteFiles notifications.
-			DidDelete bool `json:"didDelete,omitempty"`
-
-			// The client has support for sending willDeleteFiles requests.
-			WillDelete bool `json:"willDelete,omitempty"`
-		} `json:"fileOperations,omitempty"`
-	} `json:"workspace,omitempty"`
+	WorkspaceFolders []KeyValue `json:"workspaceFolders,omitempty"`
+	Workspace        KeyValue   `json:"workspace,omitempty"`
 
 	// Text document specific client capabilities.
-	TextDocument *TextDocumentClientCapabilities `json:"textDocument,omitempty"`
+	TextDocument KeyValue `json:"textDocument,omitempty"`
 
 	// Window specific client capabilities.
 	Window *struct {

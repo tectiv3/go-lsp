@@ -16,10 +16,10 @@ import (
 	"sync"
 	"testing"
 
+	"encoding/json"
 	"github.com/arduino/go-paths-helper"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
-	"go.bug.st/json"
 	"go.bug.st/lsp/jsonrpc"
 )
 

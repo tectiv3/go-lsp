@@ -10,7 +10,7 @@ import (
 	"context"
 	"io"
 
-	"go.bug.st/json"
+	"encoding/json"
 	"go.bug.st/lsp/jsonrpc"
 )
 

@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"testing"
 
+	"encoding/json"
 	"github.com/stretchr/testify/require"
-	"go.bug.st/json"
 )
 
 func TestMarshalUnmarshalWithBooleanSumType(t *testing.T) {
@@ -27,7 +27,7 @@ func TestMarshalUnmarshalWithBooleanSumType(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, "&{WorkDoneProgressOptions:<nil> StaticRegistrationOptions:<nil> TextDocumentRegistrationOptions:<nil>}", fmt.Sprintf("%+v", x.DeclarationProvider))
 	require.Equal(t, "&{WorkDoneProgressOptions:<nil>}", fmt.Sprintf("%+v", x.HoverProvider))
-	require.Equal(t, "&{IncludeText:false}", fmt.Sprintf("%+v", x.TextDocumentSync.Save))
+	require.Equal(t, "&{IncludeText:false}", string(x.TextDocumentSync))
 	err = json.Unmarshal([]byte(`
 	{
 		"declarationProvider":{},
@@ -39,7 +39,7 @@ func TestMarshalUnmarshalWithBooleanSumType(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, "&{WorkDoneProgressOptions:<nil> StaticRegistrationOptions:<nil> TextDocumentRegistrationOptions:<nil>}", fmt.Sprintf("%+v", x.DeclarationProvider))
 	require.Equal(t, "&{WorkDoneProgressOptions:<nil>}", fmt.Sprintf("%+v", x.HoverProvider))
-	require.Equal(t, "&{IncludeText:false}", fmt.Sprintf("%+v", x.TextDocumentSync.Save))
+	require.Equal(t, "&{IncludeText:false}", string(x.TextDocumentSync))
 	y := ServerCapabilities{
 		DeclarationProvider: &DeclarationOptions{
 			WorkDoneProgressOptions: &WorkDoneProgressOptions{
@@ -157,10 +157,8 @@ func TestInitializeResult(t *testing.T) {
 
 	_, err = json.MarshalIndent(&InitializeResult{
 		Capabilities: ServerCapabilities{
-			TextDocumentSync: &TextDocumentSyncOptions{
-				OpenClose: true,
-			}, //{Kind: &TDSKIncremental},
-			HoverProvider: &HoverOptions{}, // true,
+			TextDocumentSync: []byte(`{"openClose":true}`),
+			HoverProvider:    &HoverOptions{}, // true,
 			CompletionProvider: &CompletionOptions{
 				TriggerCharacters: []string{".", "\u003e", ":"},
 			},

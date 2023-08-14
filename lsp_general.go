@@ -7,7 +7,6 @@
 package lsp
 
 import (
-	"go.bug.st/json"
 	"go.bug.st/lsp/jsonrpc"
 )
 
@@ -55,7 +54,7 @@ type InitializeParams struct {
 	RootURI DocumentURI `json:"rootUri,required"`
 
 	// User provided initialization options.
-	InitializationOptions json.RawMessage `json:"initializationOptions,omitempty"`
+	InitializationOptions KeyValue `json:"initializationOptions,omitempty"`
 
 	// The capabilities provided by the client (editor or tool)
 	Capabilities ClientCapabilities `json:"capabilities,required"`

@@ -10,7 +10,7 @@ import (
 	"context"
 	"io"
 
-	"go.bug.st/json"
+	"encoding/json"
 	"go.bug.st/lsp/jsonrpc"
 )
 
@@ -92,8 +92,8 @@ func (client *Client) notificationDispatcher(logger jsonrpc.FunctionLogger, meth
 			return
 		}
 		client.handler.Progress(logger, &param)
-	case "$/cancelRequrest":
-		panic("should not reach here")
+	case "$/cancelRequest":
+		// should not reach here
 	case "$/logTrace":
 		var param LogTraceParams
 		if err := json.Unmarshal(req, &param); err != nil {
@@ -108,6 +108,8 @@ func (client *Client) notificationDispatcher(logger jsonrpc.FunctionLogger, meth
 			return
 		}
 		client.handler.WindowShowMessage(logger, &param)
+	case "LogMessage":
+		fallthrough
 	case "window/logMessage":
 		var param LogMessageParams
 		if err := json.Unmarshal(req, &param); err != nil {
@@ -115,6 +117,8 @@ func (client *Client) notificationDispatcher(logger jsonrpc.FunctionLogger, meth
 			return
 		}
 		client.handler.WindowLogMessage(logger, &param)
+	case "featureFlagsNotification":
+		// params: FeatureFlags
 	case "telemetry/event":
 		// params: ‘object’ | ‘number’ | ‘boolean’ | ‘string’;
 		client.handler.TelemetryEvent(logger, req) // passthrough
@@ -821,4 +825,9 @@ func (client *Client) TextDocumentDidSave(param *DidSaveTextDocumentParams) erro
 
 func (client *Client) TextDocumentDidClose(param *DidCloseTextDocumentParams) error {
 	return client.conn.SendNotification("textDocument/didClose", EncodeMessage(param))
+}
+
+// GetConnection returns the underlying jsonrpc.Connection.
+func (client *Client) GetConnection() *jsonrpc.Connection {
+	return client.conn
 }

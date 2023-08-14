@@ -14,8 +14,8 @@ import (
 	"strings"
 	"unicode"
 
+	"encoding/json"
 	"github.com/arduino/go-paths-helper"
-	"go.bug.st/json"
 )
 
 type URI string

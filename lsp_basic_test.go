@@ -9,8 +9,8 @@ package lsp
 import (
 	"testing"
 
+	"encoding/json"
 	"github.com/stretchr/testify/require"
-	"go.bug.st/json"
 )
 
 func TestDecodingProgressReports(t *testing.T) {
