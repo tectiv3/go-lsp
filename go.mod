@@ -1,4 +1,4 @@
-module go.bug.st/lsp
+module github.com/tectiv3/go-lsp
 
 go 1.15
 
