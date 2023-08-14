@@ -20,7 +20,7 @@ import (
 	"github.com/arduino/go-paths-helper"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
-	"go.bug.st/lsp/jsonrpc"
+	"github.com/tectiv3/go-lsp/jsonrpc"
 )
 
 var sketchPath = paths.New("/home/user/sketch")

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"go.bug.st/lsp"
+	lsp "github.com/tectiv3/go-lsp"
 )
 
 func TestApplyTextChange(t *testing.T) {

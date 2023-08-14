@@ -7,7 +7,7 @@
 package lsp
 
 import (
-	"go.bug.st/lsp/jsonrpc"
+	"github.com/tectiv3/go-lsp/jsonrpc"
 )
 
 type InitializeParams struct {
