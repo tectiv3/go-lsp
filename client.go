@@ -37,6 +37,7 @@ type ServerMessagesHandler interface {
 	WindowLogMessage(jsonrpc.FunctionLogger, *LogMessageParams)
 	TelemetryEvent(jsonrpc.FunctionLogger, json.RawMessage)
 	TextDocumentPublishDiagnostics(jsonrpc.FunctionLogger, *PublishDiagnosticsParams)
+	GetDiagnosticChannel() chan *PublishDiagnosticsParams
 }
 
 // Client is an LSP Client
@@ -48,9 +49,9 @@ type Client struct {
 	errorHandler       func(e error)
 }
 
-func NewClient(in io.Reader, out io.Writer, handler ServerMessagesHandler) *Client {
+func NewClient(in io.Reader, out io.Writer, handler ServerMessagesHandler, onError func(e error)) *Client {
 	client := &Client{
-		errorHandler:       func(e error) {},
+		errorHandler:       onError,
 		customNotification: map[string]CustomNotification{},
 		customRequest:      map[string]CustomRequest{},
 	}
@@ -830,4 +831,8 @@ func (client *Client) TextDocumentDidClose(param *DidCloseTextDocumentParams) er
 // GetConnection returns the underlying jsonrpc.Connection.
 func (client *Client) GetConnection() *jsonrpc.Connection {
 	return client.conn
+}
+
+func (client *Client) GetHandler() ServerMessagesHandler {
+	return client.handler
 }

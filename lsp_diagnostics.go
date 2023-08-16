@@ -24,6 +24,7 @@ type PublishDiagnosticsParams struct {
 
 	// An array of diagnostic information items.
 	Diagnostics []Diagnostic `json:"diagnostics"`
+	IsClear bool `json:"isClear,omitempty"`
 }
 
 type Diagnostic struct {

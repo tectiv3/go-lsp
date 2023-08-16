@@ -57,7 +57,7 @@ type InitializeParams struct {
 	InitializationOptions KeyValue `json:"initializationOptions,omitempty"`
 
 	// The capabilities provided by the client (editor or tool)
-	Capabilities ClientCapabilities `json:"capabilities,required"`
+	Capabilities KeyValue `json:"capabilities,required"`
 
 	// The initial trace setting. If omitted trace is disabled ('off').
 	Trace *TraceValue `json:"trace,omitempty"`

@@ -79,7 +79,8 @@ type ShowDocumentResult struct {
 
 type LogMessageParams struct {
 	// The message type. See {@link MessageType}
-	Type MessageType `json:"type,required"`
+	Type MessageType `json:"type,omitempty"`
+	Level int `json:"level,omitempty"`
 
 	// The actual message
 	Message string `json:"message,required"`
