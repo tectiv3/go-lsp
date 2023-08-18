@@ -6,8 +6,6 @@
 
 package lsp
 
-import "encoding/json"
-
 type DidChangeWatchedFilesParams struct {
 	// The actual file events.
 	Changes []FileEvent `json:"changes,required"`
@@ -69,10 +67,10 @@ type WorkspaceFoldersChangeEvent struct {
 	Added []WorkspaceFolder `json:"added,required"`
 
 	// The array of the removed workspace folders
-	Eemoved []WorkspaceFolder `json:"removed,required"`
+	Removed []WorkspaceFolder `json:"removed,required"`
 }
 
 type DidChangeConfigurationParams struct {
 	// The actual changed settings
-	Settings json.RawMessage `json:"settings,required"`
+	Settings KeyValue `json:"settings,required"`
 }
