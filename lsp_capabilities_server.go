@@ -786,7 +786,7 @@ type SemanticTokensOptions struct {
 
 	// Server supports providing semantic tokens for a full document.
 	// type: boolean | { delta?: boolean }
-	Full *SemanticTokenFullOptions `json:"full,omitempty"`
+	Full BooleanOrEmptyStruct `json:"full,omitempty"`
 }
 
 type SemanticTokenFullOptions struct {
